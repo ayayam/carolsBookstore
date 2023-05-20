@@ -44,7 +44,7 @@ module.exports = {
     }
   },
   book_update_put: (request, response) => {
-    // if (request.isAuthenticated()) {
+    if (request.isAuthenticated()) {
     const {_id} = request.params;
     
     const {title, author, price, starRating, synopsis} = request.body;
