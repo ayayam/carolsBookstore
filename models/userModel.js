@@ -18,21 +18,21 @@ const userSchema = new Schema({
     type: String,
   }
 });
-// plugin --> connects the schema to monogoose before going in collection, have to add her so it can initialize
+// plugin --> connects the schema to monogoose before going in collection, have to add here so it can initialize
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(mongooseFindOrCreate);
 
-// const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
-async function run() {
-  await mongoose.connect(`${process.env.DB_URL}`)
+// async function run() {
+//   await mongoose.connect(`${process.env.DB_URL}`)
 
-  mongoose.model('User', userSchema);
+//   mongoose.model('User', userSchema);
 
-  await mongoose.model('User').findOne();
-}
+//   await mongoose.model('User').findOne();
+// }
 
-run();
+// run();
 
 // summon createStrategy: creates a configured 
 passport.use(User.createStrategy());
