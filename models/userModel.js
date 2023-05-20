@@ -50,7 +50,7 @@ passport.deserializeUser(function(user, cb) {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL:"http://localhost:3000/auth/google/admin" // if testing locally
+  callbackURL:"https://lime-hilarious-oyster.cyclic.app/auth/google/admin" // if testing locally
 },
 function(accessToken, refreshToken, email, cb) {
   User.findOrCreate({ googleID: email.id }, function (err, user) {
