@@ -28,20 +28,23 @@ module.exports = {
     })
   },
   book_create_post: (request, response) => {
-    const {title, author, price, starRating, synopsis} = request.body;
-    const newBook = new Book ({
-      title: title,
-      author: author,
-      price: price,
-      starRating: starRating,
-      synopsis: synopsis
-    });
+    if (request.isAuthenticated()) {
+      const {title, author, price, starRating, synopsis} = request.body;
+      const newBook = new Book ({
+        title: title,
+        author: author,
+        price: price,
+        starRating: starRating,
+        synopsis: synopsis
+      });
 
-    newBook.save();
+      newBook.save();
 
-    response.redirect("/admin/admin-books"); 
+      response.redirect("/admin/admin-books");
+    }
   },
   book_update_put: (request, response) => {
+    if (request.isAuthenticated()) {
     const {_id} = request.params;
     
     const {title, author, price, starRating, synopsis} = request.body;
@@ -58,7 +61,7 @@ module.exports = {
       } else {
         response.redirect('/admin/admin-books');
       }
-    })
+    })}
   },
   book_delete: (request, response) => {
     const { _id } = request.params;
