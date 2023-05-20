@@ -28,7 +28,7 @@ module.exports = {
     })
   },
   book_create_post: (request, response) => {
-    if (request.isAuthenticated()) {
+    // if (request.isAuthenticated()) {
       const {title, author, price, starRating, synopsis} = request.body;
       const newBook = new Book ({
         title: title,
@@ -41,10 +41,10 @@ module.exports = {
       newBook.save();
 
       response.redirect("/admin/admin-books");
-    }
+    // }
   },
   book_update_put: (request, response) => {
-    if (request.isAuthenticated()) {
+    // if (request.isAuthenticated()) {
     const {_id} = request.params;
     
     const {title, author, price, starRating, synopsis} = request.body;
@@ -61,7 +61,8 @@ module.exports = {
       } else {
         response.redirect('/admin/admin-books');
       }
-    })}
+    })
+  // }
   },
   book_delete: (request, response) => {
     const { _id } = request.params;
