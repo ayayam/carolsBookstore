@@ -22,7 +22,7 @@ const userSchema = new Schema({
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(mongooseFindOrCreate);
 
-const User = mongoose.model('User', userSchema);
+// const User = mongoose.model('User', userSchema);
 
 async function run() {
   await mongoose.connect(`${process.env.DB_URL}`)
