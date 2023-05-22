@@ -25,7 +25,7 @@ userSchema.plugin(mongooseFindOrCreate);
 const User = mongoose.model('Users', userSchema);
 
 async function run() {
-  await mongoose.connect(`${process.env.DB_URL}`)
+  await mongoose.connect(`mongodb://127.0.0.1:27017/carolsBookstore`)
 
   mongoose.model('Users', userSchema);
 
