@@ -22,17 +22,17 @@ const userSchema = new Schema({
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(mongooseFindOrCreate);
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('Users', userSchema);
 
-// async function run() {
-//   await mongoose.connect(`${process.env.DB_URL}`)
+async function run() {
+  await mongoose.connect(`mongodb://localhost:27017/carolsBookstore`)
 
-//   mongoose.model('User', userSchema);
+  mongoose.model('Users', userSchema);
 
-//   await mongoose.model('User').findOne();
-// }
+  await mongoose.model('Users').findOne();
+}
 
-// run();
+run();
 
 // summon createStrategy: creates a configured 
 passport.use(User.createStrategy());
